@@ -18,7 +18,12 @@
         {% endfor %}
     </ul>
         <form action="{{ url_for('add') }}" method="post">
-            <input type="text" name="todo">
+            <input type="text" name="todo" placeholder="Enter todo">
+            <select name="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">high</option>
+            </select>
             <button type="submit"> Add Todo</button>
         </form>
 </body>
