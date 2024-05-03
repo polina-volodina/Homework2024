@@ -7,6 +7,11 @@
 <body>
     <form action="{{ url_for('edit', index=index) }}" method="post">
         <input type="text" name="todo" value="{{ todo['task'] }}">
+        <select name="priority">
+            <option value="low" {% if todo['priority'] == 'low' %} selected {% endif %}>Low</option>
+            <option value="medium" {% if todo['priority'] == 'medium' %} selected {% endif %}>Medium</option>
+            <option value="high" {% if todo['priority'] == 'high' %} selected {% endif %}>High</option>
+        </select>
         <button type="submit">Save</button>
     </form>
 </body>
