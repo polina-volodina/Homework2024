@@ -9,14 +9,17 @@
     <ul>
         {% for todo in todos %}
             <li>
-                <input type="checkbox" name="done" {% if todo['done'] %} checked {%endif%} disabled onchange="this.form.submit()">
-                <span {% if todo['done'] %} style="text-decoration: line-through" {%endif%}>{{ todo['task'] }}</span>
-                <a href="{{url_for('check', index=loop.index0) }}">Check</a>
+                <input type="checkbox" name="done" {% if todo['done'] %} checked {%endif%} onchange="this.form.submit()">
+                <span class="{% if todo['done'] %} done {% endif %}"></span>
+                    <font color="{{ todo['color'] }}">{{ todo['task'] }}</font>
+                    <a href="{{url_for('check', index=loop.index0) }}">Check</a>
+                </span>
                 <a href="{{url_for('edit', index=loop.index0) }}">Edit</a>
-                <a href="{{url_for('delete', index=loop.index0) }}">Delete</a> 
+                <a href="{{url_for('delete', index=loop.index0) }}">Delete</a>
             </li>
         {% endfor %}
     </ul>
+
         <form action="{{ url_for('add') }}" method="post">
             <input type="text" name="todo" placeholder="Enter todo">
             <select name="priority">
